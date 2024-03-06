@@ -1,0 +1,6 @@
+96.	The `wordCount(str)` function counts the number of words in the input string `str`, where words are separated by single spaces. For example, in the string "Never eat shredded wheat or cake", there are 6 words.
+
+def WordCount(strParam):
+    words = strParam.split()
+    return len(words)
+print(WordCount(input()))
