@@ -1,0 +1,14 @@
+The `swapCase(str)` function swaps the case of each character in the input string `str`, leaving numbers and symbols unchanged. For example, if `str` is "Hello World", the output would be "hELLO wORLD".
+
+def SwapCase(strParam):
+  output = ''
+  for letter in strParam:
+    if letter.isalpha():
+      if letter.islower():
+        output += letter.upper()
+      else:
+        output += letter.lower()
+    else:
+      output += letter
+  return output
+print(SwapCase(input()))
