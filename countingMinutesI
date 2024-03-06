@@ -1,0 +1,18 @@
+The final function, `countingMinutesI(str)`, calculates the total number of minutes between two times represented in the input string `str`. Each time is formatted with a colon and either "am" or "pm" and separated by a hyphen. The function operates on a 12-hour clock format. For example, if the input string is "9:00am-10:00am", the function returns 60, indicating that there are 60 minutes between the two times. Another example is "1:00pm-11:00am", where the function returns 1320, signifying the total minutes between the times.
+
+import re
+def CountingMinutesI(strParam):
+  times = re.split('[:-]', strParam)
+  for i in [1,3]:
+    if times[i][-2] == 'p':
+      times[i-1] = (int(times[i-1]) % 12) + 12
+    else:
+      times[i-1] = (int(times[i-1])) % 12
+    times[i] = int(times[i][:-2])
+  
+  mins1 = (times[0] * 60) + times[1]
+  mins2 = (times[2] * 60) + times[3]
+  if mins2 < mins1:
+    mins2 += 1440
+  return mins2 - mins1
+print(CountingMinutesI(input()))
