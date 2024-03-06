@@ -1,0 +1,7 @@
+54.	Have the function LetterCapitalize(str) take the str parameter being passed and capitalize the first letter of each word. Words will be separated by only one space. 
+
+def LetterCapitalize(n):
+  words = n.split(" ")
+  capital_words = [word.capitalize() for word in words]
+  return " ".join(capital_words)
+print(LetterCapitalize(input()))
