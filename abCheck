@@ -1,0 +1,9 @@
+The first function, `abCheck(str)`, checks whether the characters 'a' and 'b' are separated by exactly three places anywhere in the input string `str`. If such a separation exists at least once, the function returns "true"; otherwise, it returns "false". For example, in the string "lane borrowed", the characters 'a' and 'b' are separated by exactly three characters, making the function return "true".?
+
+def ABCheck(strParam):
+    str_len = len(strParam) 
+    for i in range(str_len - 4):
+        if strParam[i] == 'a' and strParam[i + 4] == 'b':
+            return "true"   
+    return "false"
+print(ABCheck(input()))
