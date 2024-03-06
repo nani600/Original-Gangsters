@@ -1,0 +1,16 @@
+44.	Have the function FizzBuzz(num) take the num parameter being passed and return all the numbers from 1 to num separated by spaces but replace every number that is divisible by 3 with the word "Fizz", replace every number that is divisible by 5 with the word "Buzz", and every number that is divisible by both 3 and 5 with the word "FizzBuzz".
+
+
+def FizzBuzz(num):
+  result = ""
+  for i in range(1, num+1):
+      if i%3 == 0 and i%5 == 0:
+        result += "FizzBuzz "
+      elif i%3 == 0:
+        result += "Fizz "
+      elif i%5 == 0:
+        result += "Buzz "
+      else:
+        result += str(i) + " "
+  return result.strip()
+print(FizzBuzz(input()))
