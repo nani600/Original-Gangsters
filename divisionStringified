@@ -1,0 +1,12 @@
+The function `divisionStringified(num1, num2)` divides `num1` by `num2` and returns the result as a string with properly formatted commas. If the result is only three digits long, no commas are added. For example, if `num1` is 123456789 and `num2` is 10000, the output would be "12,346".?
+
+def DivisionStringified(num1,num2):
+
+
+  div = num1 // num2
+  mod = (num1 / num2) - div
+  if mod >= 0.5: div += 1
+
+
+  return f"{div:,}"
+print(DivisionStringified(input()))
