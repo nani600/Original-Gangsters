@@ -1,0 +1,24 @@
+The `TreeConstructor(strArr)` function, implemented in JavaScript, takes an array of strings `strArr`, where each string represents a pair of integers in the format "(i1,i2)". Here, i1 signifies a child node in a tree, and i2 signifies its parent node. The function's objective is to determine whether the given integer pairs can form a proper binary tree. If a valid binary tree can be constructed, the function returns "true"; otherwise, it returns "false". Each integer within the tree is unique, ensuring that only one node in the tree possesses a given integer value. For instance, if `strArr` is `["(1,2)", "(2,4)", "(7,2)"]`, indicating the child-parent relationships, the function returns "true" as a proper binary tree can be formed, as depicted in the provided image.?
+
+def TreeConstructor(strArr):
+  nodes = {}
+  for st in strArr:
+    rel = st.split(',')
+    a = int(rel[0][1:])
+    b = int(rel[1][:len(rel[1])-1])
+    if a in nodes:
+      if nodes[a][0] != None:
+        return 'false'
+      else:
+        nodes[a][0] = b
+    else: 
+      nodes[a] = [b,0]     
+    if b in nodes:
+      if nodes[b][1] >= 2: 
+        return 'false'
+      else:
+        nodes[b][1] += 1
+    else:
+      nodes[b] = [None,1]
+  return 'true'
+print(TreeConstructor(input()))
