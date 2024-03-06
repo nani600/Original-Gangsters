@@ -1,0 +1,13 @@
+The `overlappingRectangles(strArr)` function determines the area of overlap between two rectangles on a Cartesian coordinate plane. It calculates how many times the overlapping region can fit into the first rectangle and returns that value. For instance, given `["(0,0),(2,2),(2,0),(0,2),(1,0),(1,2),(6,0),(6,2)"]`, representing two rectangles, the function returns 2, indicating that the overlapping region fits twice into the first rectangle.
+
+def OverlappingRectangles(strArr):
+  xy = zip(*eval(strArr[0]))
+  ranges, overlap = [], []
+  for d in xy:
+    r1, r2 = d[:4], d[4:]
+    d_range = sorted(( (min(r1), max(r1)), (min(r2), max(r2)) ))
+    overlap.append(min(d_range[0][1], d_range[1][1]) - max(d_range[0][0], d_range[1][0]))
+    if overlap[-1] <= 0: return 0
+    ranges.append(d_range)
+  return (ranges[0][0][1] - ranges[0][0][0])*(ranges[1][0][1] - ranges[1][0][0]) // (overlap[0]*overlap[1])
+print(OverlappingRectangles(input()))
