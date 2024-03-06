@@ -1,0 +1,22 @@
+66.	Have the function VowelSquare(strArr) take the strArr parameter being passed which will be a 2D matrix of some arbitrary size filled with letters from the alphabet, and determine if a 2x2 square composed entirely of vowels exists in the matrix. For example: strArr is ["abcd", "eikr", "oufj"] then this matrix looks like the following: 
+
+a b c d
+e i k r
+o u f j 
+
+
+def VowelSquare(strArr):
+    def is_vowel(char):
+        return char.lower() in {'a', 'e', 'i', 'o', 'u'}
+    rows, cols = len(strArr), len(strArr[0])
+    for i in range(rows - 1):
+        for j in range(cols - 1):
+            if (
+                is_vowel(strArr[i][j]) and
+                is_vowel(strArr[i][j + 1]) and
+                is_vowel(strArr[i + 1][j]) and
+                is_vowel(strArr[i + 1][j + 1])
+            ):
+                return f"{i}-{j}"
+    return "not found"
+print(VowelSquare(input()))
