@@ -1,0 +1,27 @@
+There will only ever be one unique solution and the list of available weights will not be empty. It is also possible to add two weights to only one side of the scale to balance it. If it is not possible to balance the scale then your program should return the string not possible. 
+
+Sample Test Cases:
+
+Input:["[3, 4]", "[1, 2, 7, 7]"]
+Output:"1"
+
+
+Input:["[13, 4]", "[1, 2, 3, 6, 14]"]
+Output:"3,6"
+'''
+
+
+def ScaleBalancing(strArr):
+  output = ''
+  scales = eval(strArr[0])
+  weights = eval(strArr[1])
+  weights.sort()
+  diff = abs(scales[0] - scales[1])
+  if diff in weights:
+    return diff
+  for i in range(len(weights)):
+    for j in range(i+1, len(weights)):
+      if weights[i]+weights[j] == diff or abs(weights[i]-weights[j]) == diff:
+        return '%d,%d' % (weights[i], weights[j])
+  return 'not possible'
+print(ScaleBalancing(input()))
