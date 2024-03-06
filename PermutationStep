@@ -1,0 +1,13 @@
+Using the Python language, have the function PermutationStep(num) take the num parameter being passed and return the  next number greater than num using the same digits. For example: if num is 123 return 132, if it's 12453 return 12534. If a number has no greater permutations, return -1 (ie. 999).?
+
+
+from random import sample
+import itertools
+def PermutationStep(num):
+  to_list = list(str(num))
+  for x in itertools.permutations(list(sorted(to_list))):
+    new_num = int(''.join(x))
+    if new_num > num:
+      return new_num
+  return '-1'
+print(PermutationStep(input()))
