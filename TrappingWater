@@ -1,0 +1,12 @@
+The `TrappingWater(arr)` function, also written in JavaScript, aims to determine the largest amount of water that can be trapped between buildings represented by an array of non-negative integers `arr`. Each integer in the array denotes the height of a building, and the width of each building is assumed to be 1. The function calculates the maximum amount of water that can be trapped between the two tallest buildings when it rains. For example, if `arr` is `[3, 0, 0, 2, 0, 4]`, representing the heights of buildings, the function would return 10 as the largest amount of water that can be trapped between the buildings, as illustrated in the provided images.
+
+def TrappingWater(arr):
+  waters = []
+  for i in range(1, len(arr)-1):
+    LH = max(arr[:i+1])
+    RH = max(arr[i:])
+    Th = min(LH, RH)
+    if Th > arr[i]:
+      waters.append(Th - arr[i])
+  return sum(waters)
+print(TrappingWater(input()))
