@@ -1,0 +1,18 @@
+The `binaryTreeLCA(strArr)` function takes an array of strings `strArr`, where the first element represents a binary tree with unique values, and the following two elements represent two different values within the tree. The function finds the lowest common ancestor (LCA) of these two values and returns it. For example, given `["[12, 5, 9, 6, 2, 0, 8, #, #, 7, 4, #, #, #, #]", "6", "4"]`, the function returns 5, as it's the LCA of the nodes with values 6 and 4.?
+
+import math
+def BinaryTreeLCA(strArr):
+  [treeS, v1s, v2s] = strArr
+  v1 = eval(v1s)
+  v2 = eval(v2s)
+  tree = eval(treeS.replace("#", "None"))
+  i1 = tree.index(v1)
+  i2 = tree.index(v2)
+  while i1 != i2:
+    if i1 > i2:
+      i1 = math.floor((i1-1) / 2)
+    else:
+      i2 = math.floor((i2 - 1) / 2)
+  
+  return tree[i1]
+print(BinaryTreeLCA(input()))
