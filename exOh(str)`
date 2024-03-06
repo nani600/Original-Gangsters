@@ -1,0 +1,7 @@
+78.	The `exOh(str)` function returns "true" if the input string `str` contains an equal number of 'x's and 'o's, and "false" otherwise. It only considers these two letters in the string, ignoring punctuation or numbers.
+
+def ExOh(strParam):
+    count_x = strParam.count('x')
+    count_o = strParam.count('o') 
+    return count_x == count_o 
+print(ExOh(input()))
