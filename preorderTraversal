@@ -1,0 +1,35 @@
+The `preorderTraversal(strArr)` function, written in JavaScript, aims to traverse a binary tree represented by an array of strings `strArr`. This binary tree follows a heap-like format where each node's children are located at indices 2n+1 and 2n+2, with NULL nodes represented by the symbol '#'. The function's objective is to perform a pre-order traversal of the tree, which visits each node in the order of root, left subtree, right subtree, and returns the elements separated by a space. For example, if the input `strArr` is `["5", "2", "6", "1", "9", "#", "8", "#", "#", "#", "#", "4", "#"]`, it represents a binary tree where the pre-order traversal would yield "5 2 1 9 6 8 4".
+
+import math
+def print_btree_in_preorder_traversal(binary_tree):
+  queue = [0]
+  stack = []
+  output = ""
+  while len(queue) > 0:
+    i = queue[0]
+    queue.pop(0)
+    if i >= len(binary_tree) or binary_tree[i] == "#":
+      if len(stack) > 0:
+        queue.append(stack[-1])
+        stack.pop(-1)
+      continue
+    output += (binary_tree[i] + " ")
+    i *= 2
+    queue.append(i + 1)
+    stack.append(i + 2)
+  output = output.strip()
+  return output      
+
+def PreorderTraversal(strArr):
+  binary_tree = strArr[:]
+  if (int(math.log2(len(binary_tree) + 1)) != 
+    int(math.log2(len(binary_tree))) + 1):
+    i = 0
+    while i < (1 << int(math.log2(len(binary_tree)))) - 1:
+      if binary_tree[i] == "#":
+        binary_tree.insert(2 * i + 1, "#")
+        binary_tree.insert(2 * i + 1, "#")
+      i += 1
+  return print_btree_in_preorder_traversal(binary_tree)      
+
+print(PreorderTraversal(input()))
