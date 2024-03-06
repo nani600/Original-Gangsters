@@ -1,0 +1,14 @@
+The `lruCache(strArr)` function simulates a Least Recently Used (LRU) cache algorithm. It takes an array of characters from A to Z, representing accesses to elements. It maintains a virtual cache that can hold up to 5 elements, and it returns the order of elements remaining in the cache after processing all accesses. For instance, given `["A", "B", "C", "D", "A", "E", "D", "Z"]`, representing access sequence, the function returns "C-A-E-D-Z", representing the elements remaining in the cache.?
+
+
+from collections import deque
+def LRUCache(strArr):
+  LRU = deque()
+  for e in strArr:
+    if e in LRU:
+      LRU.remove(e)
+    elif len(LRU) == 5:
+      LRU.popleft()
+    LRU.append(e)
+  return "-".join(LRU)
+print(LRUCache(input()))
