@@ -1,0 +1,8 @@
+The `numberAddition(str)` function searches for all numbers in the input string `str`, adds them together, and returns the final sum. It distinguishes between single-digit and multi-digit numbers. For example, given the string "88Hello 3World!", the output would be 91.
+
+
+import re
+def NumberAddition(strParam):
+  numArr = re.split('\D+', strParam)
+  return sum([int(x) for x in numArr if x != ''])
+print(NumberAddition(input()))
