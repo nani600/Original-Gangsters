@@ -1,0 +1,11 @@
+38.	Using the Python language, have the function TripleDouble(num1,num2) take both parameters being passed, and return 1 if there is a straight triple of a number at any place in num1 and also a straight double of the same number in num2. For example: if num1 equals 451999277 and num2 equals 41177722899, then return 1 because in the first parameter you have the straight triple 999 and you have a straight double, 99, of the same number in the second parameter. If this isn't the case, return 0.?
+
+from itertools import groupby
+def TripleDouble(num1,num2):
+    for key1, value1 in groupby(str(num1), key=lambda char: char):
+        if len(list(value1)) >= 3:
+            for key2, value2 in groupby(str(num2), key=lambda char: char):
+                if key1 == key2 and len(list(value2)) >= 2:
+                    return 1
+    return 0
+print(TripleDouble(input()))
