@@ -1,0 +1,9 @@
+The `meanMode(arr)` function returns 1 if the mode of the input array `arr` equals the mean, and 0 otherwise. The array contains positive integers only and has a single mode.?
+
+def MeanMode(arr):
+  mode = float(max(set(arr), key=arr.count))
+  mean = sum(arr) / len(arr)
+  if mode == mean:
+    return 1
+  return 0
+print(MeanMode(input()))
