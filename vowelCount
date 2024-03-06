@@ -1,0 +1,12 @@
+95.	The `vowelCount(str)` function counts the number of vowels in the input string `str`, ignoring the letter 'y'. For example, in the string "All cows eat grass and moo", there are 8 vowels.?
+
+def VowelCount(strParam):
+    vowel_count = 0
+    vowels = "aeiouAEIOU"
+    
+    for char in strParam:
+        if char in vowels:
+            vowel_count += 1
+            
+    return vowel_count
+print(VowelCount(input()))
