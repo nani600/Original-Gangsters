@@ -1,0 +1,11 @@
+The `primeTime(num)` function, also implemented in JavaScript, determines whether the given number `num` is a prime number within the range of 1 to 2^16. It returns "true" if the number is prime and "false" otherwise. The function essentially checks if the input number is divisible only by 1 and itself. This is achieved by iterating from 2 up to the square root of the number and checking for any divisors. If no divisors are found, the number is considered prime. If the input number is within the specified range and meets the prime criteria, the function returns "true"; otherwise, it returns "false".?
+
+
+def PrimeTime(num):
+    if num < 2:
+        return "false"
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return "false"
+    return "true"
+print(PrimeTime(int(input())))
