@@ -1,0 +1,18 @@
+30.	Using the Python language, have the function CaesarCipher(str,num) take the str parameter and perform a Caesar Cipher shift on it using the num parameter as the shifting number. A Caesar Cipher works by shifting each letter in the string N places down in the alphabet (in this case N will be num). Punctuation, spaces, and capitalization should remain intact. For example if the string is "Caesar Cipher" and num is 2 the output should be "Ecguct Ekrjgt".
+
+
+def CaesarCipher(string,num):
+  final = ''
+  for letter in string:
+    if letter.islower() or letter.isupper():
+      to_bytes = bytes(letter, 'utf-8')
+      if letter.isupper():
+        number_letter = (((to_bytes[0] - 65) + num) % 26) + 65
+      elif letter.islower():
+        number_letter = (((to_bytes[0] - 97) + num) % 26) + 97
+      shift = bytes([number_letter])
+      final += str(shift)[2]
+    else:
+      final += letter
+  return final
+print(CaesarCipher(input()))
