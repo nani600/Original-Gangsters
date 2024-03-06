@@ -1,0 +1,18 @@
+The `longestMatrixPath(strArr)` function takes an array of strings representing an NxM matrix of single-digit positive integers. It finds the longest increasing path composed of distinct integers in the matrix, where movements are restricted to up, down, left, and right. The function returns the number of connections in the longest path. For example, given `["345", "326", "221"]`, representing a 3x3 matrix, the function would return 3 for the longest increasing path 3 → 4 → 5 → 6.?
+
+def LongestMatrixPath(strArr):
+  matrix = [[int(x) for x in row] for row in strArr]
+  def dfs(i, j):
+    if not dp[i][j]:
+        val = matrix[i][j]
+        dp[i][j] = 1 + max(
+            dfs(i - 1, j) if i and val > matrix[i - 1][j] else 0,
+            dfs(i + 1, j) if i < M - 1 and val > matrix[i + 1][j] else 0,
+            dfs(i, j - 1) if j and val > matrix[i][j - 1] else 0,
+            dfs(i, j + 1) if j < N - 1 and val > matrix[i][j + 1] else 0)
+    return dp[i][j]
+
+  M, N = len(matrix), len(matrix[0])
+  dp = [[0] * N for i in range(M)]
+  return max(dfs(x, y) for x in range(M) for y in range(N)) - 1
+print(LongestMatrixPath(input()))
