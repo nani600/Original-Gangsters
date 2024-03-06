@@ -1,0 +1,11 @@
+The function `dashInsert(str)` inserts dashes between each pair of odd numbers in the input string `str`, excluding zeros. For instance, given the string "454793", the output would be "4547-9-3", as dashes are placed between odd number pairs.
+
+  def DashInsert(strParam):
+  output = strParam[0]
+  for i in range(1, len(strParam)):
+    if int(strParam[i]) % 2 == 1 and int(strParam[i-1]) % 2 == 1:
+      output += ('-' + strParam[i])
+    else:
+      output += strParam[i]
+  return output
+print(DashInsert(input()))
