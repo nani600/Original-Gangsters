@@ -1,0 +1,65 @@
+For example: if str is "r?d?drdd" then your program should output the final correct string that will allow a path to be formed from the top left of a 5x5 grid to the bottom right. For this input, your program should therefore return the string rrdrdrdd. There will only ever be one correct path and there will always be at least one question mark within the input string. 
+
+Sample Test Cases:
+
+Input:"???rrurdr?"
+Output:dddrrurdrd
+
+Input:"drdr??rrddd?"
+Output:drdruurrdddd
+
+'''
+
+  
+
+
+import itertools
+dirDic = {'r':(1,0), 'l':(-1,0), 'u':(0,-1), 'd':(0,1), '?':(0,0)}
+def CorrectPath(strParam):
+  
+  x = sum([dirDic[x][0] for x in strParam])
+  y = sum([dirDic[x][1] for x in strParam])
+  missing = (4-x,4-y)
+
+
+  unknown = strParam.count('?')
+  allMoves = list(itertools.product('rlud', repeat=unknown))
+  possMoves = []
+  for path in allMoves:
+    path = list(path)
+    xPath = 0
+    yPath = 0
+    for move in path:
+      xPath += dirDic[move][0]
+      yPath += dirDic[move][1]
+    if (xPath, yPath) == missing:
+      possPath = ''
+      for i in strParam:
+        if i == '?':
+          possPath += path.pop(0)
+        else:
+          possPath += i
+      if tryMove(possPath):
+        return possPath
+  
+  return possMoves
+
+
+def tryMove(path):
+  grid = [[None for i in range(5)] for j in range(5)]
+  end = [4,4]
+  pos = [0,0]
+  grid[0][0] = 1
+  for m in path:
+    pos[0] += dirDic[m][0]
+    pos[1] += dirDic[m][1]
+    if pos[0] < 0 or pos[0] > 4: return False
+    if pos[1] < 0 or pos[1] > 4: return False
+    if grid[pos[0]][pos[1]]: return False
+    grid[pos[0]][pos[1]] = 1
+  if pos == end:
+    return True
+
+
+print(CorrectPath(input()))
+
