@@ -1,0 +1,16 @@
+Have the function Division(num1,num2) take both parameters being passed and return the Greatest Common Factor.  That is, return the greatest number that evenly goes into both numbers with no remainder. For example: 12 and 16 both  are divisible by 1, 2, and 4 so the output should be 4. The range for both parameters will be from 1 to 10^3. Using the Python language, have the function StringScramble(str1,str2) take both parameters being passed and return the string true if a portion of str1 characters can be rearranged to match str2, otherwise return the string false.
+
+
+               For example: if str1 is "rkqodlw" and str2 is "world" the output should return true. Punctuation and symbols will not be entered with the parameters.
+
+
+def Division(num1, num2):
+    t = min(int(num1), int(num2))
+    if int(num1) % t == 0 and int(num2) % t == 0:
+        return t
+    else:
+        for i in range(t + 1, 0, -1):
+            if int(num1) % i == 0 and int(num2) % i == 0:
+                return i
+print(Division(input()))
+
