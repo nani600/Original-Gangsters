@@ -1,0 +1,6 @@
+The `histogramArea(arr)` function analyzes an array of non-negative integers representing bar heights on a graph. It determines the largest area under the entire bar graph and returns that value. For example, given `[2, 1, 3, 4, 1]`, representing bar heights, the function would return 6 as the largest area under the graph.
+
+
+def HistogramArea(arr):
+  return max(min(arr[i: j + 1])*(j - i + 1) for j in range(len(arr)) for i in range(j + 1))
+print(HistogramArea(input()))
